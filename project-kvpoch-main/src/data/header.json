@@ -1,0 +1,22 @@
+[
+    {
+        "label": "Home", 
+        "link": "./index",
+        "compName": "Homepage"
+    },
+    {
+        "label": "Library Info", 
+        "link": "./lib_info",
+        "compName": "LibInfo"
+    },
+    {
+        "label": "Filter", 
+        "link": "./Filter",
+        "compName": "FilterPage"
+    },
+    {
+        "label": "Reviews", 
+        "link": "./reviews",
+        "compName": "ReviewPage"
+    }
+]

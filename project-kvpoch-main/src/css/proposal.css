@@ -1,0 +1,39 @@
+body {
+    background-color: #4B2E83;
+}
+
+p {
+    font-size: large;
+    font-family: Helvetica, Arial, sans-serif;
+    color: white;
+}
+
+li {
+    font-size: large;
+    font-family: Helvetica, Arial, sans-serif;
+    color: white;
+}
+
+h1 {
+    color: white;
+}
+
+h2 {
+    background-color: #B7A57A;
+}
+
+a {
+    color: #B7A57A;
+}
+
+.welcome, section {
+    padding: 5px;
+    margin: 15px;
+    border: 40px;
+    background-color: black;
+}
+
+img {
+    height: 800px;
+    width: 1000px;
+}

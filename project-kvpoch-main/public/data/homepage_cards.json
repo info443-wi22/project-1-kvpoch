@@ -1,0 +1,29 @@
+[
+    {
+        "id": "Suzzalo",
+        "name": "Suzzallo",
+        "labInfo": "The Most Famous Library in UW!",
+        "img": "img/suzzallo.png" 
+    },
+
+    {   
+        "id": "OdegaardUnder",
+        "name": "Odegaard",
+        "labInfo": "The Most Popular Library in UW!",
+        "img": "img/odegaard.jpg" 
+    },
+
+    {
+        "id": "Allen",
+        "name": "Allen",
+        "labInfo": "A Quiet Place to take a nap (Shhhh)",
+        "img": "img/suzzallo.png" 
+    },
+
+    {
+        "id": "EastAsia",
+        "name": "East Asian",
+        "labInfo": "A Place Suitable for Cramming Exams",
+        "img": "img/east_asia.jpeg" 
+    }
+]

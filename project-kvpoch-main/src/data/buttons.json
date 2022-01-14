@@ -1,0 +1,26 @@
+[
+    {
+        "name": "All",
+        "value": "all"
+      },
+    {
+      "name": "5 Stars",
+      "value": "5 Stars"
+    },
+    {
+      "name": "4 Stars",
+      "value": "4 Stars"
+    },
+    {
+      "name": "3 Stars",
+      "value": "3 Stars"
+    },
+    {
+      "name": "2 Stars",
+      "value": "2 Stars"
+    },
+    {
+        "name": "1 Star",
+        "value": "1 Star"
+      }
+  ]

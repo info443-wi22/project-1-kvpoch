@@ -1,0 +1,40 @@
+[
+    {
+        "level": "1 Stars",
+        "rating": "1",
+        "ratingID": "one",
+        "content": [
+            "Suzzalo is so beautiful and completely silent for studying! It's perfect for finals weeks!",
+            "Ode has a nice coffee vending machine!",
+            "It's easy to find a seat at the East Asia Library!"
+        ]
+    },
+    {
+        "level": "2 Stars",
+        "rating": "2",
+        "ratingID": "two",
+        "content": []
+    },
+    {
+        "level": "3 Stars",
+        "rating": "3",
+        "ratingID": "three",
+        "content": []
+    },
+    {
+        "level": "4 Stars",
+        "rating": "4",
+        "ratingID": "four",
+        "content": []
+    },
+    {
+        "level": "5 Stars",
+        "rating": "5",
+        "ratingID": "five",
+        "content": [
+            "There's too many people in Ode! I can never find a seat with a table!",
+            "Suzzalo is too silent, it's kind of awkward.",
+            "The restrooms at the East Asia Library sucks."
+        ]
+    }
+]

@@ -1,0 +1,60 @@
+[
+    {
+        "userName": "Katherine",
+        "library": "Suzzalo Library",
+        "rating": "5 Stars",
+        "text": "The spiral staircase is so pretty. The Harry Potter room is so beautiful and silent, which is perfect for studying.",
+        "timestamp": 1320161040000
+    }, 
+    {
+        "userName": "Joe",
+        "library": "Odegaard Undergraduate Library",
+        "rating": "3 Stars",
+        "text": "There's a nice coffee vending machine. But, I can never find an open spot with a table!",
+        "timestamp": 1320161760000
+    },
+    { "userName": "Kevin",
+        "library": "East Asia Library",
+        "rating": "4 Stars",
+        "text": "It's easy to find a seat at the East Asia Library and it's nice to be surrounded by bookshelves! ",
+        "timestamp": 1320162060000},
+
+    { "userName": "Nick",
+        "library": "Suzzalo Library",
+        "rating": "3 Stars",
+        "text": "Suzzalo is too silent, it's kind of awkward.",
+        "timestamp": 1320162120000},
+
+    { "userName": "Taylor",
+            "library": "Foster Business Library",
+            "rating": "3 Stars",
+            "text": "Not too quiet. Not too loud.",
+            "timestamp": 1320162122000},
+    
+    { "userName": "Olivia",
+            "library": "Odegaard Undergraduate Library",
+            "rating": "4 Stars",
+            "text": "Really nice place, I always go there with my friends to study.",
+            "timestamp": 1320132120000},
+
+    { "userName": "Jake",
+            "library": "Suzzalo Library",
+            "rating": "2 Stars",
+            "text": "Overatted. Starbucks line is long. Too many people, can't find a spot.",
+            "timestamp": 1320122120000},
+
+     { "userName": "Josh",
+            "library": "Odegaard Undergraduate Library",
+            "rating": "4 Stars",
+            "text": "Has computers.",
+            "timestamp": 1320135120000},
+
+    { "userName": "Sabrina",
+            "library": "East Asia Library",
+            "rating": "1 Star",
+            "text": "Too small. The bathrooms there suck.",
+            "timestamp": 1320145120000}
+
+
+
+]
