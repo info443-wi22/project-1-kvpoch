@@ -30,7 +30,7 @@ what makes up this code structure.
 | `handleFilterBox`| This function represents the actual result of filtered libraries from the user's checked boxes, which sets the state variable `filterResult`|
 | `filterCheckedArray`| This state variable represents the array of features checked by the user|
 | `filterLabels`| This state variable represents the features of libraries (gets data from .json file)|
-| `libFeatures`|This state variable represents the libraries and what features they are associated with.
+| `libFeatures`|This state variable represents the libraries and what features they are associated with (gets data from .json file).
 
 
 
@@ -65,7 +65,7 @@ architectural deficiencies, such as code smells, or things that just need improv
 The code is generally readable and well-documented. There are short comments that explain the overall purpose of each function. However, there isn't too many comments because the code is able to explain its architecture on its own. The code look readable because none of the functions are too long or complex and they each have their own single purpose.
 
 There are no standard violations that apply to the codebase being analyzed.
-There are no additional design qualities (other than modifiability) required of the codebase being analyzed.
+There are no additional design qualities (other than modifiability) required of the codebase being analyzed. If I were to add another feature to this code, I would add a button to clear all the checkboxes, so that you don't have to refresh the page to clear all them.
 
 
 
@@ -75,16 +75,62 @@ There are no additional design qualities (other than modifiability) required of 
 
 ## Unit Tests
 
- 1. The test can be found in project-1-kvpoch/project-kvpoch-main/src/App.test.js
-To run the tests, type `npm run test` in the terminal
+The test can be found in project-1-kvpoch/project-kvpoch-main/src/App.test.js. To run the tests, type `npm run test` in the terminal.
 
- 2. A written discussion of what aspects of your code you chose to test and why. In particular: what inputs to your functions/etc. did you test (and why those inputs)? The purpose of this discussion is to justify the test cases you implemented—be clear about your design intent when creating this aspect of the system!
+|![alt text ](./images/unit_tests.png )|
+:--:|
+| _Figure 3: Unit Testing_|
+>Unit Testing image shows the result after running the nine tests for this code.
 
- A list or table of tests/assertions you wrote is fine for meeting this requirement, and each test should only require a sentence or phrase to justify. Note that if you've written a clean test suite structure, you can also use the description labels of each test case for this.
+Unit tests are created to to ensure that the code is functional for refactoring and improving code to be easier. I created nine tests, but I unfortunately could not figure out how to write the tests in a way to get them all to pass. Below is the tests I made and the intended purpose of each test.
 
- 3. Documentation of your test coverage and tests passing. Your report should demonstrate that your tests sufficiently cover the code in question, and that the code does pass these tests initially. A screenshot of your coverage report is acceptable (though as always be sure to label, caption, and explain the image).
+ **`<Filter />`**
 
- Note that if the code your are testing is only a portion of a module or package, you may need to include an explanation/demonstration of your coverage that is different than a coverage report.
+ | Test | Why |
+ | --- | --- |
+ render heading |Checks to see if the page renders the correct heading
+ |render default cardBox element when no checked boxes| Checks if page renders default card box with no library name
+ |default is no checkboxes | Checks to see if checkboxes are defaulted to not being checked
+|returns card boxes when clicked checkboxes | Checks to see a different library card is returned when you check a box|
+
+**`<Filters />`**
+
+| Test | Why |
+| --- | --- |
+|render one checkbox| Checks to see if one checkbox is created for one feature
+|render one label | Checks to see if one text label is created for one feature
+
+  **`<FilterBox />`**
+
+  | Test | Why |
+  | --- | --- |
+  | renders list of five labels with checkboxes | Checks to see if the feature list is created correctly with an array of five text labels and five checkboxes |
+
+**`<FilterCard />`**
+
+  | Test | Why |
+  | --- | --- |
+  | renders one text of card | Checks to see if the text content of library card is rendered correctly|
+
+  **`<handleOnChange />`**
+
+  | Test | Why |
+  | --- | --- |
+  | clicked checkboxes | Checks if check boxes do change when clicked |
+
+
+
+**Coverage**
+
+ |![alt text ](./images/coverage.png )|
+ :--:|
+ | _Figure 4: Testing Coverage Report_|
+ >The Testing Coverage Report image shows the coverage report (before refactoring) for the unit tests made and ran on the FilterPage.js code.
+
+The tests do not cover 100% of the code because around lines 21-40 deal with the using the `useEffect()` to import data, which I decided not to test on.
+
+
+
 
 ## Refactoring the Code
 
@@ -94,10 +140,10 @@ It identifies each code smell and how to rewrite the code to fix this system's a
 | Code Smell | What/Where it was | How to Fix |
 | --- | --- | ---|
 | Lazy Element | `FilterCard` | Copy its code and paste it into `FilterCardBox`
-| Speculative Generality | `comparisonResult` (inside `handleFilterBox`)| Take out the variable since it never gets used
+| Speculative Generality | `comparisonResult` (inside `handleFilterBox`) Line 79| Take out the variable since it never gets used
 |Mysterious Name| `Filters`, `FilterBox` `handleFilterBox`| Change       `Filters` => `FilterFeatures`,  `FilterBox` => `FilterFeaturesList`            `handleFilterBox` => `handleFilterFeaturesList`
 |Mysterious Name| `func` prop in (in `Filters`, `FilterBox`)| Change to `whatToDoWhenChecked`
 |Duplicated Code| `Filters` and `FilterBox`| Combine code into one function
 |Comments|console.log comments (inside `handleFilterBox`, `FilterCardBox`, `Filters`)| Extract console.log() since they are just debugging comments
-
-feature envy, middle man ?
+> Speculative Generality and Comments code smell refactoring can be found in the original code (project-1-kvpoch/project-kvpoch-main/src/FilterPage.js). Lazy Element  code smell refactoring can
+be found in Refactoring.js (project-1-kvpoch/project-kvpoch-main/src/Refactoring.js). I decided not to refactor this code smell in the original code because it would change the structure in a way that would not allow a few of the unit tests to work. I also decided not to refactor the Mysterious name code smell in the original code because the unit tests would also not be able to pass.
