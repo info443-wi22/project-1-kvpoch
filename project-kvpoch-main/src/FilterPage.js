@@ -50,7 +50,7 @@ export function Filter() {
         <section className="flexFilterBox">
           <FilterCardBox result={filterResult} />
         </section>
-        <FilterBox labels={filterLabels} checkedState={filterCheckedArray} func={setFilterCheckedArray}/>
+        <FilterBox labels={filterLabels} checkedState={filterCheckedArray} whatToDoWhenChecked={setFilterCheckedArray}/>
       </section>
     )
 }
@@ -72,19 +72,19 @@ function handleFilterBox(currCheckedState, setCurrFilterResult, libFeatures) {
     if (libFeatures != null) {
       newFilterResult = libFeatures.map((lib, libId) => {
         let libName = lib.name;
-        // console.log(libNames);
+        
         let libFeat = lib.feature[0];
         let libKeys = Object.keys(libFeat);
         let filterFlag = false;
-        let comparisonResult = libKeys.map((name, ftId) => {
-          // console.log("current ID: " + ftId + " lib name: " + name);
+        libKeys.map((name, ftId) => {
+          
           if (currCheckedState[ftId] === true && libFeat[name] === true) {
             filterFlag = true;
             return (libName); 
           }
           return "";
         });
-        // console.log("current lib name : " + libName + " should show: " + filterFlag);
+        
         if (filterFlag) {
           return libName;
         } else {
@@ -103,14 +103,14 @@ function FilterCardBox(props) {
   let filterResult = props.result;
   if (filterResult.length === 0) {
     return (
-      <div className='cardBox'>
+      <div className='cardBox' data-testid='cardBox'>
         <p>Sorry, there is no result matching to the current features.</p>
       </div>
     );
   } else {
-    // console.log(filterResult);
+    
     let cardList = filterResult.map((r) => {
-      // console.log(r);
+      
       return (
         <FilterCard text={r} key={r}/>
       );
@@ -124,43 +124,45 @@ function FilterCardBox(props) {
 }
 
 // This function creates a list of library info cards
-function FilterCard(props) {
+export function FilterCard(props) {
   return <div className="card">
-    <div className="card-content">
-        <p className="lib-info">{props.text}</p>
+    <div className="card-content" >
+        <p className="lib-info" data-testid='lib-info'>{props.text}</p>
     </div>
   </div>;
 }
 
 // This function creates a list of filter labels with clickable boxes
-function FilterBox(props) {
+export function FilterBox(props) {
     let labels = props.labels;
     let checkedState = props.checkedState;
-    let func = props.func;
+    let whatToDoWhenChecked = props.whatToDoWhenChecked;
     let filterList = [];
     if (labels != null) {
       filterList = labels.map((l, idx) => {
-        return <Filters label={l.label} key={l.label} id={idx} checkedState={checkedState} func={func}/>;
+        return <Filters label={l.label} key={l.label} id={idx} checkedState={checkedState} whatToDoWhenChecked={whatToDoWhenChecked}/>;
       });
+      
     }
+    
     return(
-        <section className="flexFilterBy">
+        <section className="flexFilterBy" >
         <h2 className="mb-4 bg-warning"> FILTER BY </h2>
-        {filterList}
+        <div data-testid='filterList'>{filterList}</div>
       </section>
     )
 }
 
 // This components represents each filter label on the page
-function Filters (props) {
+export function Filters (props) {
   let label = props.label;
   let checkedState = props.checkedState;
-  let func = props.func;
+  let whatToDoWhenChecked = props.whatToDoWhenChecked;
   let arrayId = props.id;
-  // console.log(arrayId)
-  return  <label className="container"> {label}
-            <input type="checkbox" checked={checkedState[arrayId]} onChange={
-              () => handleOnChange(checkedState, arrayId, func)} />
+  
+  return  <label className="container" data-testid='label'> {label}
+            <input type="checkbox" data-testid='checkbox' checked={checkedState[arrayId]} onChange={
+              () => handleOnChange(checkedState, arrayId, whatToDoWhenChecked)} />
             <span className="checkmark"></span>
           </label>;
 }

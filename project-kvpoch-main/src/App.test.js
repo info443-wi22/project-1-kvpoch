@@ -1,54 +1,146 @@
 import '@testing-library/jest-dom'
-import {render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
+//import userEvent from '@testing-library/user-event';
 
-import App from './src/App'; 
+//import App from './src/App'; 
+import {Filter} from '../src/FilterPage'; 
+import {Filters} from '../src/FilterPage'; 
+import { handleOnChange } from '../src/FilterPage';
+import { FilterBox, FilterCard } from '../src/FilterPage';
 
-import { FilterBox } from './src/FilterPage';
-import { ReviewForm, Comment }  from './src/Reviews';
+describe("<Filter />", () => {
+  test('render heading', () => {
+    render(<Filter />);
+ 
+    const headEl = screen.getByRole('heading');
+    expect(headEl).toBeInTheDocument();
+    
+  });
+ 
+  test('render default cardBox element when no checked boxes', () => {
+    render(<Filter />);
+ 
+    const cbEl = screen.getByTestId('cardBox');
+    expect(cbEl).toBeInTheDocument();
+    expect(cbEl).toHaveTextContent("Sorry, there is no result matching to the current features.");
+    
+  });
+
+  test('default is no checkboxes', () => {
+    render(<Filter />);
+   
+    const checkboxEl = screen.queryAllByTestId('checkbox');
+    expect(checkboxEl).not.toBeChecked();
+    const cbEl = screen.getByTestId('cardBox');
+    expect(cbEl).toHaveTextContent("Sorry, there is no result matching to the current features.")
+ 
+  
+  });
 
 
-  describe('The form element', () => {
-    test('clears content after submit', () => {
-      //const callback = () => {}; //empty
-      
-      //can render single element
-      //render(<AddTaskForm addTaskCallback={callback} />)
-      const setUserValue = () => {}; //empty
-      const setLibraryValue = () => {};
-      const setRating = () => {};
-      const addReview = () => {};
-      
-      render (<ReviewForm library={libraryValue} user={userValue} rating={ratingValue} whatToDoOnSubmit={addReview}
-                        setUserOnSubmit={setUserValue} setLibraryOnSubmit={setLibraryValue} setRatingOnSubmit={setRating} />)
+ 
+  test('returns card boxes when clicked checkboxes', () => {
+    render(<Filter />);
+   
+    const checkboxEl = screen.queryAllByTestId('checkbox');
+    userEvent.click(checkboxEl);
+    expect(checkboxEl).toBeChecked();
+    const cbEl = screen.getByTestId('cardBox');
+    expect(cbEl).not.toHaveTextContent("Sorry, there is no result matching to the current features.")
+ 
   
-      //enter text
-      const formInput = screen.getByRole('textbox')
-      userEvent.type(formInput, "TEST REVIEW"); //type in two words
+  });
   
-      //shows typed input (controlled form!)
-      expect(screen.queryByDisplayValue("TEST TASK")).toBeInTheDocument();
-  
-      //click button
-      userEvent.click(screen.getByRole('button'));
-  
-      //should also clear the form
-      expect(screen.queryByDisplayValue("TEST TASK")).not.toBeInTheDocument();
-    })
-  })
+ 
+});
 
-  describe('The comment element', () => {
-    test('is filled color thumb when clicked', () => {
-      
-     
-      
-      render (<Comment comment={} key={} />);
+
+
+  describe("<Filters />", () => {
   
-      
-      //click button
-      userEvent.click(screen.getByRole('button'));
+  test('render one checkbox', () => {
+    let labels = "";
+    let checkedState = "";
+    let func = () => {};
+    let idx = "";
+    render(<Filters label={labels} key={labels} id={idx} checkedState={checkedState} func={func}/>);
+ 
+    const checkboxEl = screen.queryAllByTestId('checkbox');
+    //userEvent.change(checkboxEl);
+    expect(checkboxEl).toHaveLength(1);
+
+    
+  });
+
+  test('render one label', () => {
+    let labels = "";
+    let checkedState = "";
+    let func = () => {};
+    let idx = "";
+    render(<Filters label={labels} key={labels} id={idx} checkedState={checkedState} func={func}/>);
+ 
+    const label = screen.queryAllByTestId('label');
+    //userEvent.change(checkboxEl);
+    expect(label).toHaveLength(1);
+    
+  });
   
-      
-      expect(screen.queryByDisplayValue('button')).toBeInTheDocument();
-    })
-  })
+
+ 
+});
+
+describe("<FilterBox />", () => {
+  test('renders list of five labels with checkboxes', () => {
+   
+    let filterLabels = [];
+    let setFilterCheckedArray = () => {};
+    let filterCheckedArray = [];
+    render(<FilterBox labels={filterLabels} checkedState={filterCheckedArray} func={setFilterCheckedArray}/>);
+ 
+    const filterList = screen.queryAllByTestId('filterList');
+    expect(filterList.firstChild).toBe(Array[5]);
+    
+    
+  });
+
+  
+});
+
+describe("<FilterCard />", () => {
+  test('renders one text of card', () => {
+   
+    let r = "";
+    render(<FilterCard text={r} key={r}/>);
+ 
+    const text = screen.queryAllByTestId('lib-info');
+    
+    expect(text).toHaveLength(1);
+    //expect(text.firstChild).toHaveTextContent();
+    
+    
+  });
+
+});
+
+
+describe("<handleOnChange />", () => {
+  test('clicked checkboxes', () => {
+   
+    let checkedState = "";
+    let func = () => {};
+    let arrayId = "";
+    render(handleOnChange(checkedState, arrayId, func));
+ 
+    const checkboxEl = screen.queryAllByTestId('checkbox');
+    userEvent.click(checkboxEl);
+    expect(checkboxEl).toBeChecked();
+    
+ 
+    // Execute the click event again
+    userEvent.click(checkboxEl);
+    expect(cbEl).not.toBeChecked();
+    
+    
+    
+  });
+});
